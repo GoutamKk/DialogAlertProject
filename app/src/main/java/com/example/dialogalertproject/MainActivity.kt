@@ -1,6 +1,7 @@
 package com.example.dialogalertproject
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
@@ -29,11 +30,15 @@ class MainActivity : AppCompatActivity() {
                 setTitle("Want Calculation")
                 setMessage("Additon & Subtraction of Same Number")
                 setPositiveButton("Add") { _, _ ->
-                    val valu = (binding.txtArea.text.toString().toInt()+ binding.txtArea.text.toString().toInt()).toString()
+                    val valu =
+                        (binding.txtArea.text.toString().toInt() + binding.txtArea.text.toString()
+                            .toInt()).toString()
                     binding.txtArea.setText(valu)
                 }
                 setNegativeButton("Sub") { _, _ ->
-                    val valu1 = (binding.txtArea.text.toString().toInt()- binding.txtArea.text.toString().toInt()).toString()
+                    val valu1 =
+                        (binding.txtArea.text.toString().toInt() - binding.txtArea.text.toString()
+                            .toInt()).toString()
                     binding.txtArea.setText(valu1)
                 }
                 setNeutralButton("Reset") { _, _ ->
@@ -45,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.layoutBtn.setOnClickListener {
-                Dialog(this).apply {
+            Dialog(this).apply {
                 setContentView(R.layout.temp_layout)
                 val add = findViewById<Button>(R.id.addBtn)
                 val sub = findViewById<Button>(R.id.asubBtn)
@@ -60,12 +65,12 @@ class MainActivity : AppCompatActivity() {
                 )
                 show()
                 add.setOnClickListener {
-                    val variable = (txt.text.toString().toInt() +2).toString()
+                    val variable = (txt.text.toString().toInt() + 2).toString()
                     txt.text = variable
                 }
                 sub.setOnClickListener {
                     val variable = (txt.text.toString().toInt() - 2).toString()
-                    txt.text =variable
+                    txt.text = variable
                 }
                 mul.setOnClickListener {
                     val variable = (txt.text.toString().toInt() * 2).toString()
@@ -81,5 +86,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.designpage.setOnClickListener {
+            val intent = Intent(this, UiActivity::class.java)
+            startActivity(intent)
+            finish()
+            }
+
     }
 }
